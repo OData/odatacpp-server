@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="Common.vs12.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="odata_library.vs12.vcxproj">
+      <Project>{4bf94744-fa07-4bd2-8d41-fb292dc6d129}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(ODataCppE2eService)\odata_test_service.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\data_source_task.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\mongo_action.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\odata_request_context.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\query_handler.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\create_handler.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\odata_value_builder.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\query_target.cpp" />
+    <ClCompile Include="$(ODataCppE2eService)\query_node_visitor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(ODataCppE2eService)\odata_test_service.h" />
+    <ClInclude Include="$(ODataCppE2eService)\odata_service_exception.h" />
+    <ClInclude Include="$(ODataCppE2eService)\data_source_task.h" />
+    <ClInclude Include="$(ODataCppE2eService)\mongo_action.h" />
+    <ClInclude Include="$(ODataCppE2eService)\odata_request_context.h" />
+    <ClInclude Include="$(ODataCppE2eService)\query_handler.h" />
+    <ClInclude Include="$(ODataCppE2eService)\create_handler.h" />
+    <ClInclude Include="$(ODataCppE2eService)\odata_value_builder.h" />
+    <ClInclude Include="$(ODataCppE2eService)\query_target.h" />
+    <ClInclude Include="$(ODataCppE2eService)\query_node_visitor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(ODataCppE2eService)\odata_test_service_metadata.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{72AD0AEA-BB68-4F84-BFE5-392BF90FC729}</ProjectGuid>
+    <RootNamespace>odatacpp_full</RootNamespace>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <ProjectName>odata_e2e_service.vs12</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(UtilitiesInc);$(UnitTestppBase);$(ODataCppInc);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ODataCppLib);$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)d</TargetName>
+    <OutDir>$(ODataCppOut)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(UtilitiesInc);$(UnitTestppBase);$(ODataCppInc);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ODataCppLib);$(LibraryPath)</LibraryPath>
+    <OutDir>$(ODataCppOut)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_USRDLL;COMMONTESTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Git\OData\mongo-cxx-driver\build\install\include;C:\boost_1_55_0-msvc-11.0-32</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\boost_1_55_0-msvc-11.0-32\lib32-msvc-11.0;C:\Git\OData\mongo-cxx-driver\build\install\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mongoclient-gd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_USRDLL;COMMONTESTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

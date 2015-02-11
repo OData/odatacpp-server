@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="Common.vs11.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4BF94744-FA07-4BD2-8D41-FB292DC6D129}</ProjectGuid>
+    <RootNamespace>odatacpp_full</RootNamespace>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <ProjectName>odata_library.vs11</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ODataCppOut)\$(Configuration)\</OutDir>
+    <IncludePath>$(ODataCppInc);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ODataCppLib);$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ODataCppOut)\$(Configuration)\</OutDir>
+    <IncludePath>$(ODataCppInc);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ODataCppLib);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_USRDLL;ODATALIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/Zm200</AdditionalOptions>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).int.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xmllite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_USRDLL;ODATALIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/Zm200</AdditionalOptions>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).int.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xmllite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(ODataCppSrc)\core\odata_context_url_parser.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_entity_model_builder.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_entity_value.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_json_operation_payload_parameter_writer.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_json_operation_url_parameter_writer.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_json_reader_full.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_json_reader_minimal.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_json_writer.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_primitive_value.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_property_map.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_structured_value.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_entity_container.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_model.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_model_reader.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_model_writer.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_model_utility.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_schema.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\edm\edm_type.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\utility.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\xmlhelpers.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_path.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_path_segment.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_path_segment_visitor.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_query_node.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_query_node_visitor.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_uri.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_uri_parser.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_message_writer.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_context_url_builder.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\core\odata_message_reader.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\asyncrt_utils.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\base64.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\json.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\json_parsing.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\json_serialization.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\uri.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\uri_builder.cpp" />
+    <ClCompile Include="$(ODataCppSrc)\common\uri_parser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(ODataCppInc)\odata\common\utility.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\platform.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\xmlhelpers.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_entity_container.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_entity_set.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_model.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_model_reader.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_model_utility.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_navigation_source.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_operation_import.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_schema.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_singleton.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_type.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\odata_edm.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_collection_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_complex_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_context_url_parser.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_core.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_entity_factory.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_entity_model_builder.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_entity_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_enum_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_json_operation_payload_parameter_writer.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_json_operation_url_parameter_writer.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_json_reader_full.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_json_reader_minimal.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_entity_reference.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_entity_reference_collection.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_error.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_json_writer.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_parameter.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_primitive_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_property_map.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_structured_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\xmlstream.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_path.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_path_segment.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_path_segment_visitor.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_query_node.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_query_node_visitor.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_select_expand_clause.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_uri.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_uri_parser.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_filter_clause.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_orderby_clause.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_search_clause.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\nullable.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_format.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_message_writer.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_message_writer_settings.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_service_document.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_service_document_element.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_context_url_builder.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_metadata_builder.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_batch_part_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_batch_value.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\edm\edm_model_writer.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_message_reader.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\core\odata_operation.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\asyncrt_utils.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\base_uri.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\basic_types.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\compat\apple_compat.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\compat\nosal.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\compat\SafeInt3.hpp" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\compat\windows_compat.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\json.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\uri.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\uri_builder.h" />
+    <ClInclude Include="$(ODataCppInc)\odata\common\uri_parser.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
