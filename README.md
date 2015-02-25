@@ -119,9 +119,6 @@ After successfully building the libraries, you can run the functional and end-to
     cd odatacpp-server/output
     ./test_runner *tests*
 
-# Documentation
-Please refer to our [GitHub pages](https://odata.github.io/odatacpp-server) for documentation.
-
 # Community
 ## Issue tracker
 To report bugs and require features, please use our [issue tracker](https://github.com/odata/odatacpp-server/issues?state=open).
