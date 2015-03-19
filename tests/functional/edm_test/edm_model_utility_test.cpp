@@ -211,6 +211,24 @@ TEST(resolve_edm_types_after_parsing_type_in_operation)
 	VERIFY_ARE_EQUAL(verify_param->get_param_type()->get_type_kind(), edm_type_kind_t::Complex);
 }
 
+TEST(resolve_correct_operation_after_parsing_type_in_operation_import)
+{
+	::odata::utility::string_t name_space = U("odata.functional.test");
+	auto model = std::make_shared<edm_model>();
+	auto schema = model->add_schema(U("schema"), name_space);
+	std::shared_ptr<edm_operation_type> operation;
+	operation.reset(new edm_operation_type(U("operation"), name_space, false, U(""), EdmOperationKind::Function, false));
+	schema->add_operation_type(operation);
+	std::shared_ptr<edm_operation_import> operation_import;
+	operation_import.reset(new edm_operation_import(U("operation_import"), U("operation"), U("dummy"), true, OperationImportKind::FunctionImport));
+	std::shared_ptr<edm_entity_container> container;
+	container.reset(new edm_entity_container(U("container"), true));
+	container->add_operation_import(operation_import);
+	schema->add_container(container);
+	edm_model_utility::resolve_edm_types_after_parsing(model);
+	VERIFY_ARE_EQUAL(operation, operation_import->get_operation_type());
+}
+
 }
 
 }}}

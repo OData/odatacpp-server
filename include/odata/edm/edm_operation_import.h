@@ -40,6 +40,11 @@ public:
 		return m_name;
 	}
 
+	const ::odata::utility::string_t get_operation_name() const
+	{
+		return m_operation_name;
+	}
+
 	const std::shared_ptr<edm_operation_type> get_operation_type() const
 	{
 		return m_operation_type;

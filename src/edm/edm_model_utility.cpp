@@ -459,7 +459,7 @@ void edm_model_utility::resolve_type_under_entity_container(const std::shared_pt
 		auto op = operation_import_iter->second;
 		if (op)
 		{
-			::odata::utility::string_t operation_name = op->get_name();
+			::odata::utility::string_t operation_name = op->get_operation_name();
 			op->set_operation_type(model->find_operation_type(operation_name));
 		}
 	}
