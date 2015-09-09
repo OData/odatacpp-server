@@ -56,6 +56,10 @@ private:
 class odata_function : public odata_operation
 {
 public:
+    odata_function(::odata::utility::string_t name) : odata_operation(name)
+    {
+    }
+
     bool is_function()
     {
         return true;
@@ -65,6 +69,10 @@ public:
 class odata_action : public odata_operation
 {
 public:
+    odata_action(::odata::utility::string_t name) : odata_operation(name)
+    {
+    }
+    
     bool is_function()
     {
         return false;

@@ -183,8 +183,6 @@ void odata_path_parser::bind_path(std::vector<::odata::utility::string_t> raw_se
 {
 	m_bound_segments.clear();
 
-	bool should_be_no_segment = false;
-
 	for (::size_t i = 0; i < raw_segments.size(); ++i)
 	{
 		if (i == 0)

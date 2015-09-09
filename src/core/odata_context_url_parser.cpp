@@ -79,8 +79,8 @@ std::shared_ptr<edm_named_type> odata_contex_url_parser::get_payload_content_typ
 	}
 
 	//Handle select/expand items. Right now just remove them. 
-	int index_last_slash = path.rfind(U("/"));
-	int index_last_bracket = path.find_first_of(U("("), ++index_last_slash);
+	int index_last_slash = (int)path.rfind(U("/"));
+	int index_last_bracket = (int)path.find_first_of(U("("), ++index_last_slash);
 	if (index_last_slash < index_last_bracket)
 	{
 		auto first_part = path.substr(0, index_last_bracket);
@@ -123,7 +123,7 @@ std::shared_ptr<edm_named_type> odata_contex_url_parser::get_payload_content_typ
 
 		std::shared_ptr<odata_path_segment> last_segment;
 		int index;
-		for (index = segments.size() - 1; index >=0; index--)
+		for (index = (int)segments.size() - 1; index >= 0; index--)
 		{
 			if (segments[index]->segment_type() != odata_path_segment_type::Type)
 			{
@@ -179,7 +179,7 @@ std::shared_ptr<edm_named_type> odata_contex_url_parser::get_payload_content_typ
 			throw std::runtime_error("Invalid context url");
 		}
 
-		if (index != segments.size() - 1)
+		if (index != (int)segments.size() - 1)
 		{
 			last_segment = segments[segments.size() - 1];
 			if (last_segment->segment_type() == odata_path_segment_type::Type)

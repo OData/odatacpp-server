@@ -141,7 +141,7 @@ public:
 
 	int size() const 
 	{
-		return m_properties.size();
+		return (int)m_properties.size();
 	}
 
 private:

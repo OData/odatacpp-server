@@ -293,11 +293,14 @@ namespace odata { namespace edm {
 #endif
     }
     
+#ifdef WIN32
+    ::odata::utility::string_t xml_reader::read_to_end(std::istream&)
+    {
+        throw std::runtime_error("xml_reader::read_to_end() should not be called in Windows");
+    }
+#else // LINUX
     ::odata::utility::string_t xml_reader::read_to_end(std::istream& stream)
     {
-#ifdef WIN32
-        throw std::runtime_error("xml_reader::read_to_end() should not be called in Windows");
-#else // LINUX
         ::odata::utility::string_t text;
         while (stream.good())
         {
@@ -309,8 +312,8 @@ namespace odata { namespace edm {
             text.push_back(c);
         }
         return text;
-#endif
     }
+#endif
 
     void xml_writer::initialize(std::ostream& stream)
     {

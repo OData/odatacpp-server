@@ -301,7 +301,6 @@ namespace odata { namespace core
         {
             return collection_json;
         }
-        return result;
     }
 
     bool odata_json_writer::is_type_serializable(const std::shared_ptr<edm_named_type>& property_type)

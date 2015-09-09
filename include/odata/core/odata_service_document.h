@@ -42,7 +42,7 @@ public:
 
 	int size() const 
 	{
-		return m_elements.size();
+		return (int)m_elements.size();
 	}
 
 private:

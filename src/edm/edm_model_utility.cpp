@@ -119,8 +119,8 @@ std::shared_ptr<edm_named_type> edm_model_utility::get_edm_type_from_name(const 
 	}
 	else if (type_name.substr(0, 10) == U("Collection"))
 	{
-		int index_first = type_name.find_first_of('(') + 1;
-		int index_last = type_name.find_last_of(')');
+		int index_first = (int)type_name.find_first_of('(') + 1;
+		int index_last = (int)type_name.find_last_of(')');
 		::odata::utility::string_t element_name = type_name.substr(index_first, index_last - index_first);
 
         auto element_type = edm_model_utility::get_edm_type_from_name(element_name);
@@ -263,8 +263,8 @@ std::shared_ptr<edm_named_type> edm_model_utility::resolve_type_from_name(const 
 	}
 	else if (qualified_name.substr(0, 10) == U("Collection"))
 	{
-		int index_first = qualified_name.find_first_of('(') + 1;
-		int index_last = qualified_name.find_last_of(')');
+		int index_first = (int)qualified_name.find_first_of('(') + 1;
+		int index_last = (int)qualified_name.find_last_of(')');
 
 		if (index_first >= index_last)
 		{
@@ -287,8 +287,8 @@ std::shared_ptr<edm_named_type> edm_model_utility::resolve_type_from_name(const 
 
 	if (collection_full_name.substr(0, 10) == U("Collection"))
 	{
-		int index_first = collection_full_name.find_first_of('(') + 1;
-		int index_last = collection_full_name.find_last_of(')');
+		int index_first = (int)collection_full_name.find_first_of('(') + 1;
+		int index_last = (int)collection_full_name.find_last_of(')');
 
 		if (index_first >= index_last)
 		{
@@ -404,8 +404,8 @@ std::shared_ptr<edm_named_type> edm_model_utility::resolve_undetermined_type(con
 			::odata::utility::string_t type_name = undeterminedType->get_name();
             if (type_name.substr(0, 10) == U("Collection"))
             {
-                int index_first = type_name.find_first_of('(') + 1;
-                int index_last = type_name.find_last_of(')');
+                int index_first = (int)type_name.find_first_of('(') + 1;
+                int index_last = (int)type_name.find_last_of(')');
 
                 if (index_first >= index_last)
                 {

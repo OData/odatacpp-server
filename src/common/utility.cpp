@@ -76,9 +76,7 @@ bool is_relative_path(const string_t& _root_url, const string_t& _path)
 	std::transform(root_url.begin(), root_url.end(), root_url.begin(), ::tolower);
 	std::transform(path.begin(), path.end(), path.begin(), ::tolower);
 
-	size_t index = path.find(root_url);
-
-	return path.find(root_url) != 0 ? true : false;
+	return path.find(root_url) != 0;
 }
 
 string_t print_double(const double& db, int precision)
@@ -91,11 +89,11 @@ string_t print_double(const double& db, int precision)
 	}
 
 	string_t output = oss.str();
-	int dot = output.find(U('.'));
+	int dot = (int)output.find(U('.'));
 	if (dot > 0)
 	{
-		int i = output.length() - 1;
-		for (i = output.length() - 1; i > dot; i--)
+		int i;
+		for (i = (int)output.length() - 1; i > dot; i--)
 		{
 			if (output[i] != U('0'))
 			{
@@ -124,11 +122,11 @@ string_t print_float(const float& db, int precision)
 	}
 
 	string_t output = oss.str();
-	int dot = output.find(U('.'));
+	int dot = (int)output.find(U('.'));
 	if (dot > 0)
 	{
-		int i = output.length() - 1;
-		for (i = output.length() - 1; i > dot; i--)
+		int i;
+		for (i = (int)output.length() - 1; i > dot; i--)
 		{
 			if (output[i] != U('0'))
 			{

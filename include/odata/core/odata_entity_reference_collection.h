@@ -79,7 +79,7 @@ public:
 
     int size() const 
 	{
-		return m_references.size();
+		return (int)m_references.size();
 	}
 
 private:

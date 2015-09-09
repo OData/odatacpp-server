@@ -28,18 +28,18 @@ enum RET_NAVI_ENTITY_TYPE
 {
     ::odata::utility::string_t ret = context_url;
 
-	int index = ret.find(U("#"));
+	int index = (int)ret.find(U("#"));
 	ret = ret.substr(index + 1, ret.length() - index - 1);
 
-	index = ret.find(U("/$entity"));
+	index = (int)ret.find(U("/$entity"));
 	if (index != -1)
 	{
 		ret = ret.substr(0, index);
 	}
 
-	int index_last_slash = ret.rfind(U("/"));
+	int index_last_slash = (int)ret.rfind(U("/"));
 
-	int index_last_bracket = ret.find_first_of(U("("), ++index_last_slash);
+	int index_last_bracket = (int)ret.find_first_of(U("("), ++index_last_slash);
 	if (index_last_slash < index_last_bracket)
 	{
 		ret = ret.substr(0, index_last_bracket);
@@ -118,7 +118,7 @@ void odata_json_reader_minimal::set_edit_link_for_entity_value(const std::shared
 		throw std::runtime_error("Invalid context url");
 	}
 	std::shared_ptr<odata_path_segment> last_segment;
-	for (int i = segments.size() - 1; i >=0; i--)
+	for (int i = (int)segments.size() - 1; i >=0; i--)
 	{
 		if (segments[i]->segment_type() != odata_path_segment_type::Type)
 		{
