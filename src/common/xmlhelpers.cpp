@@ -410,13 +410,13 @@ namespace odata { namespace edm {
         }
 #else 
         xmlChar* valueXmlName = (xmlChar*) ::odata::utility::conversions::to_utf8string(elementName).c_str();
-	if(elementPrefix.empty())
+	if(elementPrefix.empty() && namespaceName.empty())
 	{
 	  xmlTextWriterStartElement(m_writer,valueXmlName);
 	}
 	else
 	{
-	  xmlChar* valueXmlPrefix = (xmlChar*) ::odata::utility::conversions::to_utf8string(elementPrefix).c_str();
+	  xmlChar* valueXmlPrefix = elementPrefix.empty() ? NULL :(xmlChar*) ::odata::utility::conversions::to_utf8string(elementPrefix).c_str(); //CBE
 	  xmlChar* valueXmlNamespace = namespaceName.empty() ? NULL : (xmlChar*) ::odata::utility::conversions::to_utf8string(namespaceName).c_str();
 	  xmlTextWriterStartElementNS(m_writer,valueXmlPrefix,valueXmlName,valueXmlNamespace);
 	}
