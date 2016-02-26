@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------
+//---------------------------------------------------------------------
 // <copyright file="edm_model_writer.cpp" company="Microsoft">
 //      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 // </copyright>
@@ -10,18 +10,15 @@ namespace odata { namespace edm
 {
 void edm_model_writer::write_model(std::shared_ptr<edm_model> model)
 {
-    //write_start_element_with_prefix(U("edmx"), U("Edmx"), U("edmx"));
-    write_start_element(U("Edmx"), U("edmx"));
+    write_start_element_with_prefix(U("edmx"), U("Edmx"));
     write_attribute_string(U("xmlns"), U("edmx"), U(""), U("http://docs.oasis-open.org/odata/ns/edmx"));
     write_attribute_string(U(""), U("Version"), U(""), model->get_version());
 
-    
-    write_start_element(U("DataServices"), U("edmx"));
+    write_start_element_with_prefix(U("edmx"), U("DataServices"));
     for(auto schema_iter = model->get_schema().cbegin(); schema_iter != model->get_schema().cend(); schema_iter++)
     {
         write_schema(*schema_iter);
     }
-
 
     write_end_element();
     write_end_element();
@@ -31,8 +28,8 @@ void edm_model_writer::write_model(std::shared_ptr<edm_model> model)
 
 void edm_model_writer::write_schema(std::shared_ptr<edm_schema> schema)
 {
-    write_start_element(U("Schema"), U("ns"));
-    write_attribute_string(U("xmlns"), U("ns"), U(""), U("http://docs.oasis-open.org/odata/ns/edm"));
+    write_start_element(U("Schema"));
+    write_attribute_string(U(""), U("xmlns"), U(""), U("http://docs.oasis-open.org/odata/ns/edm"));
     write_attribute_string(U(""), U("Namespace"), U(""), schema->get_name());
 
     for(auto iter = schema->get_enum_types().cbegin(); iter != schema->get_enum_types().cend(); iter++)
