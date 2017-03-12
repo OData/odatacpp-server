@@ -86,7 +86,7 @@ TEST(primitive_value)
 	VERIFY_ARE_EQUAL(float_v->get_value_type()->get_type_kind(), edm_type_kind_t::Primitive);
 	primitive_type = std::dynamic_pointer_cast<edm_primitive_type>(float_v->get_value_type());
 	VERIFY_ARE_EQUAL(primitive_type->get_primitive_kind(), edm_primitive_type_kind_t::Single);
-	VERIFY_IS_TRUE(abs(float_v->as<float>() - -121.2312) < 0.00001);
+	VERIFY_IS_TRUE(std::abs(float_v->as<float>() - -121.2312) < 0.00001);
 
 	//string
 	auto str_v = odata_primitive_value::make_primitive_value(U("test string"));
@@ -242,7 +242,7 @@ TEST(structured_value)
 	VERIFY_ARE_EQUAL(str, U("string_t input"));
 	b_get = structurd_value->try_get(U("double"), db);
 	VERIFY_ARE_EQUAL(b_get, true);
-	double as = abs(db - -32342212.23424);
+	double as = std::abs(db - -32342212.23424);
 	VERIFY_ARE_EQUAL(as < 0.000001, true);
 }
 
@@ -370,11 +370,11 @@ TEST(primitive_collection_value)
 	collection_value->add_collection_value(p_value_3);
 
 	p_value_1 = std::dynamic_pointer_cast<odata_primitive_value>(collection_value->get_collection_values()[0]);
-	VERIFY_IS_TRUE(abs(p_value_1->as<double>() - -12123.2312) < 0.000001);
+	VERIFY_IS_TRUE(std::abs(p_value_1->as<double>() - -12123.2312) < 0.000001);
 	p_value_2 = std::dynamic_pointer_cast<odata_primitive_value>(collection_value->get_collection_values()[1]);
-	VERIFY_IS_TRUE(abs(p_value_2->as<double>() - -123123213) < 0.000001);
+	VERIFY_IS_TRUE(std::abs(p_value_2->as<double>() - -123123213) < 0.000001);
 	p_value_3 = std::dynamic_pointer_cast<odata_primitive_value>(collection_value->get_collection_values()[2]);
-	VERIFY_IS_TRUE(abs(p_value_3->as<double>() - -121.2312) < 0.000001);
+	VERIFY_IS_TRUE(std::abs(p_value_3->as<double>() - -121.2312) < 0.000001);
 }
 
 TEST(complex_collection_value)

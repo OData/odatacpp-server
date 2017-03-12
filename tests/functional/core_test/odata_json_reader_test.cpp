@@ -553,7 +553,7 @@ TEST(json_primitive_double)
 	auto primitive_type = std::dynamic_pointer_cast<edm_primitive_type>(primitive_value->get_value_type());
 	VERIFY_ARE_EQUAL(primitive_type->get_primitive_kind(), edm_primitive_type_kind_t::Double);
 	VERIFY_ARE_EQUAL(primitive_type->get_type_kind(), edm_type_kind_t::Primitive);
-	VERIFY_IS_TRUE(abs(primitive_value->as<double>() - 123.3434) < 0.000001);
+	VERIFY_IS_TRUE(std::abs(primitive_value->as<double>() - 123.3434) < 0.000001);
 }
 
 TEST(json_primitive_float)
@@ -572,7 +572,7 @@ TEST(json_primitive_float)
 	auto primitive_type = std::dynamic_pointer_cast<edm_primitive_type>(primitive_value->get_value_type());
 	VERIFY_ARE_EQUAL(primitive_type->get_primitive_kind(), edm_primitive_type_kind_t::Single);
 	VERIFY_ARE_EQUAL(primitive_type->get_type_kind(), edm_type_kind_t::Primitive);
-	VERIFY_IS_TRUE(abs(primitive_value->as<float>() - -123.4) < 0.00001);
+	VERIFY_IS_TRUE(std::abs(primitive_value->as<float>() - -123.4) < 0.00001);
 }
 
 TEST(json_primitive_duration)

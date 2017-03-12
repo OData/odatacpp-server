@@ -3247,6 +3247,7 @@ public:
                 result = (T)((__int64)t/(__int64)u);
         }
         else // Corner case
+        {
             if( t == IntTraits< T >::minInt && u == (unsigned __int64)IntTraits< T >::minInt )
             {
                 // Min int divided by it's own magnitude is -1
@@ -3256,7 +3257,8 @@ public:
             {
                 result = 0;
             }
-            return SafeIntNoError;
+        }
+        return SafeIntNoError;
     }
 
     template < typename E >
