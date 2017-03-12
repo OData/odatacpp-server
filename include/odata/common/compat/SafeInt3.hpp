@@ -3257,8 +3257,8 @@ public:
             {
                 result = 0;
             }
-            return SafeIntNoError;
         }
+        return SafeIntNoError;
     }
 
     template < typename E >
